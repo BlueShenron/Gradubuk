@@ -1,0 +1,457 @@
+
+
+CREATE DATABASE  `2015_segamag` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE  2015_segamag.2015_membre (
+id_membre INT NOT NULL AUTO_INCREMENT ,
+pseudo VARCHAR( 200 ) NOT NULL ,
+pass_md5 VARCHAR( 200 ) NOT NULL ,
+email VARCHAR( 200 ) NOT NULL ,
+groupe VARCHAR( 200 ) NOT NULL ,
+membre_date_inscription DATETIME NOT NULL ,
+membre_date_modif DATETIME NOT NULL ,
+membre_date_derniere_connexion DATETIME NOT NULL ,
+cle VARCHAR(32) NOT NULL ,
+PRIMARY KEY  (id_membre)
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE  `2015_segamag`.`2015_developpeur` (
+`id_developpeur` INT NOT NULL AUTO_INCREMENT ,
+`developpeur_nom` VARCHAR( 200 ) NOT NULL ,
+`developpeur_logo` VARCHAR( 200 ) NOT NULL DEFAULT 'nologo.jpg',
+`developpeur_date_creation` DATETIME NOT NULL ,
+`developpeur_date_modif` DATETIME NOT NULL ,
+PRIMARY KEY (  `id_developpeur` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE  `2015_segamag`.`2015_editeur` (
+`id_editeur` INT NOT NULL AUTO_INCREMENT ,
+`editeur_nom` VARCHAR( 200 ) NOT NULL ,
+`editeur_logo` VARCHAR( 200 ) NOT NULL DEFAULT 'nologo.jpg',
+`editeur_date_creation` DATETIME NOT NULL ,
+`editeur_date_modif` DATETIME NOT NULL ,
+PRIMARY KEY (  `id_editeur` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE  `2015_segamag`.`2015_constructeur` (
+`id_constructeur` INT NOT NULL AUTO_INCREMENT ,
+`constructeur_nom` VARCHAR( 200 ) NOT NULL ,
+`constructeur_logo` VARCHAR( 200 ) NOT NULL DEFAULT  'nologo.jpg',
+`constructeur_date_creation` DATETIME NOT NULL ,
+`constructeur_date_modif` DATETIME NOT NULL ,
+PRIMARY KEY (  `id_constructeur` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE  `2015_segamag`.`2015_plateforme` (
+`id_plateforme` INT NOT NULL AUTO_INCREMENT ,
+`id_constructeur` INT NOT NULL ,
+`plateforme_nom_generique` VARCHAR( 200 ) NOT NULL ,
+`plateforme_image_generique` VARCHAR( 200 ) NOT NULL DEFAULT  'nopicture.jpg',
+`plateforme_description` TEXT NOT NULL ,
+`retro` TINYINT NOT NULL DEFAULT  '0',
+`plateforme_date_creation` DATETIME NOT NULL ,
+`plateforme_date_modif` DATETIME NOT NULL ,
+`plateforme_dossier` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+PRIMARY KEY (  `id_plateforme` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE  `2015_segamag`.`2015_plateforme_version` (
+`id_plateforme_version` INT NOT NULL AUTO_INCREMENT ,
+`id_plateforme` INT NOT NULL ,
+`plateforme_version_nom` VARCHAR( 200 ) NOT NULL ,
+`date_lancement` DATE NOT NULL ,
+`date_fin` DATE NOT NULL ,
+`plateforme_version_description` TEXT NOT NULL ,
+`plateforme_version_date_creation` DATETIME NOT NULL ,
+`plateforme_version_date_modif` DATETIME NOT NULL ,
+`id_membre` INT NOT NULL ,
+PRIMARY KEY (  `id_plateforme_version` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+CREATE TABLE  `2015_segamag`.`2015_plateforme_version_image` (
+`id_plateforme_version_image` INT NOT NULL AUTO_INCREMENT ,
+`id_plateforme_version` INT NOT NULL ,
+`plateforme_version_image_nom` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`plateforme_version_image_date_creation` DATETIME NOT NULL ,
+`id_membre` INT NOT NULL ,
+PRIMARY KEY (  `id_plateforme_version_image` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+
+CREATE TABLE  `2015_segamag`.`2015_genre` (
+`id_genre` INT NOT NULL AUTO_INCREMENT ,
+`genre_nom` VARCHAR( 200 ) NOT NULL ,
+`genre_date_creation` DATETIME NOT NULL ,
+`genre_date_modif` DATETIME NOT NULL ,
+PRIMARY KEY (  `id_genre` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE  `2015_segamag`.`2015_nombre_joueur` (
+`id_nombre_joueur` INT NOT NULL AUTO_INCREMENT ,
+`nombre_joueur_nom` VARCHAR( 200 ) NOT NULL ,
+`nombre_joueur_date_creation` DATETIME NOT NULL ,
+`nombre_joueur_date_modif` DATETIME NOT NULL ,
+PRIMARY KEY (  `id_nombre_joueur` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE  `2015_segamag`.`2015_famille_categorie_news` (
+`id_famille_categorie_news` INT NOT NULL AUTO_INCREMENT ,
+`famille_categorie_news_nom` VARCHAR( 200 ) NOT NULL ,
+`famille_categorie_news_date_creation` DATETIME NOT NULL ,
+`famille_categorie_news_date_modif` DATETIME NOT NULL ,
+PRIMARY KEY (  `id_famille_categorie_news` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+CREATE TABLE  `2015_segamag`.`2015_categorie_news` (
+`id_categorie_news` INT NOT NULL AUTO_INCREMENT ,
+`id_famille_categorie_news` INT NOT NULL ,
+`categorie_news_nom` VARCHAR( 200 ) NOT NULL ,
+`categorie_news_image` VARCHAR( 200 ) NOT NULL DEFAULT  'nopicture.jpg',
+`categorie_news_date_creation` DATETIME NOT NULL ,
+`categorie_news_date_modif` DATETIME NOT NULL ,
+PRIMARY KEY (  `id_categorie_news` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+
+
+
+CREATE TABLE  `2015_segamag`.`2015_partenaire` (
+`id_partenaire` INT NOT NULL AUTO_INCREMENT ,
+`partenaire_nom` VARCHAR( 200 ) NOT NULL ,
+`partenaire_url` VARCHAR( 200 ) NOT NULL ,
+`partenaire_date_creation` DATETIME NOT NULL ,
+`partenaire_date_modif` DATETIME NOT NULL ,
+PRIMARY KEY (  `id_partenaire` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE  `2015_segamag`.`2015_categorie_image` (
+`id_categorie_image` INT NOT NULL AUTO_INCREMENT ,
+`categorie_image_nom` VARCHAR( 200 ) NOT NULL ,
+`categorie_image_date_creation` DATETIME NOT NULL ,
+`categorie_image_date_modif` DATETIME NOT NULL ,
+PRIMARY KEY (  `id_categorie_image` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+CREATE TABLE  `2015_segamag`.`2015_categorie_video` (
+`id_categorie_video` INT NOT NULL AUTO_INCREMENT ,
+`categorie_video_nom` VARCHAR( 200 ) NOT NULL ,
+`categorie_video_date_creation` DATETIME NOT NULL ,
+`categorie_video_date_modif` DATETIME NOT NULL ,
+PRIMARY KEY (  `id_categorie_video` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+
+/---------------------------------------------/
+
+
+CREATE TABLE  `2015_segamag`.`2015_jeux` (
+`id_jeu` INT NOT NULL AUTO_INCREMENT ,
+`id_developpeur` INT NOT NULL ,
+`id_genre` INT NOT NULL ,
+`jeu_nom_generique` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`id_nb_joueurs_offline` INT NOT NULL ,
+`jeu_online` TINYINT NOT NULL ,
+`id_nb_joueur_online` INT NOT NULL ,
+`jeu_descriptif` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`jeu_dossier` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+`jeu_date_creation` DATETIME NOT NULL ,
+                     
+`jeu_date_modification` DATETIME NOT NULL ,
+                   
+PRIMARY KEY (  `id_jeu` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE  `2015_segamag`.`2015_jeux_versions_plateformes` (
+`id_jeu_version_plateforme` INT NOT NULL AUTO_INCREMENT ,
+`id_jeu` INT NOT NULL ,
+`id_plateforme` INT NOT NULL ,
+PRIMARY KEY (  `id_jeu_version_plateforme` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE  `2015_segamag`.`2015_jeux_versions_regions` (
+`id_jeu_version_region` INT NOT NULL AUTO_INCREMENT ,
+`id_jeu_version_plateforme` INT NOT NULL ,
+`jeu_nom_region` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`jeu_region` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`jeu_date_sortie` DATE NOT NULL ,
+`id_editeur` INT NOT NULL ,
+`jeu_cover_file_url` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT  'nopicture.jpg',
+`jeu_jaquette_file_url` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT  'nopicture.jpg',
+PRIMARY KEY (  `id_jeu_version_region` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE  `2015_segamag`.`2015_classifications_pegi` (
+`id_classification_pegi` INT NOT NULL AUTO_INCREMENT ,
+`id_jeu_version_region` INT NOT NULL ,
+`pegi_3` TINYINT NOT NULL ,
+`pegi_4` TINYINT NOT NULL ,
+`pegi_6` TINYINT NOT NULL ,
+`pegi_7` TINYINT NOT NULL ,
+`pegi_12` TINYINT NOT NULL ,
+`pegi_16` TINYINT NOT NULL ,
+`pegi_18` TINYINT NOT NULL ,
+`pegi_langage` TINYINT NOT NULL ,
+`pegi_discrimination` TINYINT NOT NULL ,
+`pegi_drogue` TINYINT NOT NULL ,
+`pegi_peur` TINYINT NOT NULL ,
+`pegi_jeux_hasard` TINYINT NOT NULL ,
+`pegi_sexe` TINYINT NOT NULL ,
+`pegi_violence` TINYINT NOT NULL ,
+`pegi_internet` TINYINT NOT NULL ,
+PRIMARY KEY (  `id_classification_pegi` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+CREATE TABLE  `2015_segamag`.`2015_classifications_cero` (
+`id_classification_cero` INT NOT NULL AUTO_INCREMENT ,
+`id_jeu_version_region` INT NOT NULL ,
+`cero_a` TINYINT NOT NULL ,
+`cero_b` TINYINT NOT NULL ,
+`cero_c` TINYINT NOT NULL ,
+`cero_d` TINYINT NOT NULL ,
+`cero_z` TINYINT NOT NULL ,
+`cero_romance` TINYINT NOT NULL ,
+`cero_sexe` TINYINT NOT NULL ,
+`cero_violence` TINYINT NOT NULL ,
+`cero_horreur` TINYINT NOT NULL ,
+`cero_argent` TINYINT NOT NULL ,
+`cero_crime` TINYINT NOT NULL ,
+`cero_alcool` TINYINT NOT NULL ,
+`cero_drogue` TINYINT NOT NULL ,
+`cero_langage` TINYINT NOT NULL ,
+PRIMARY KEY (  `id_classification_cero` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+CREATE TABLE  `2015_segamag`.`2015_classifications_esrb` (
+`id_classification_esrb` INT NOT NULL AUTO_INCREMENT ,
+`id_jeu_version_region` INT NOT NULL ,
+`esrb_c` TINYINT NOT NULL ,
+`esrb_e` TINYINT NOT NULL ,
+`esrb_e10` TINYINT NOT NULL ,
+`esrb_t` TINYINT NOT NULL ,
+`esrb_m` TINYINT NOT NULL ,
+`esrb_a` TINYINT NOT NULL ,
+`esrb_info` TINYINT NOT NULL ,
+`esrb_location` TINYINT NOT NULL ,
+`esrb_interact` TINYINT NOT NULL ,
+PRIMARY KEY (  `id_classification_esrb` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE  `2015_segamag`.`2015_nb_joueurs` (
+`id_nb_joueurs` INT NOT NULL AUTO_INCREMENT ,
+`nb_joueurs` VARCHAR( 200 ) NOT NULL ,
+PRIMARY KEY (  `id_nb_joueurs` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+
+CREATE TABLE  `2015_segamag`.`2015_tests` (
+`id_test` INT NOT NULL AUTO_INCREMENT ,
+`id_jeu_version_plateforme` INT NOT NULL ,
+`test_corps` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`test_note` INT NOT NULL ,
+`test_plus` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`test_moins` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`test_date_creation` DATETIME NOT NULL ,               
+`test_date_modification` DATETIME NOT NULL ,
+`test_date_publication` DATETIME NOT NULL ,
+`id_membre_createur` INT NOT NULL ,
+`id_membre_modificateur` INT NOT NULL ,
+PRIMARY KEY (  `id_test` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+CREATE TABLE  `2015_segamag`.`2015_tests_jeux` (
+`id_test_jeu` INT NOT NULL AUTO_INCREMENT ,
+`id_jeu_version` INT NOT NULL ,
+`id_test` INT NOT NULL ,
+PRIMARY KEY (  `id_test_jeu` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+
+CREATE TABLE  `2015_segamag`.`2015_images_jeux_versions_plateformes` (
+`id_image_jeu_version_plateforme` INT NOT NULL AUTO_INCREMENT ,
+`id_jeu_version_plateforme` INT NOT NULL ,
+`image_url` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`id_img_categorie` INT NOT NULL ,
+`image_titre` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+PRIMARY KEY (  `id_image_jeu_version_plateforme` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+
+
+CREATE TABLE  `2015_segamag`.`2015_videos_jeux_versions_plateformes` (
+`id_video_jeu_version_plateforme` INT NOT NULL AUTO_INCREMENT ,
+`id_jeu_version_plateforme` INT NOT NULL ,
+`video_url` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`id_video_categorie` INT NOT NULL ,
+`video_titre` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+PRIMARY KEY (  `id_video_jeu_version_plateforme` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+
+CREATE TABLE  `2015_segamag`.`2015_videos` (
+`id_video` INT NOT NULL AUTO_INCREMENT ,
+`video_url` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`video_titre` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`id_video_categorie` INT NOT NULL ,
+PRIMARY KEY (  `id_video` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE  `2015_segamag`.`2015_videos_jeux_versions` (
+`id_video_jeu_version` INT NOT NULL AUTO_INCREMENT ,
+`id_video` INT NOT NULL ,
+`id_jeu_version` INT NOT NULL ,
+PRIMARY KEY (  `id_video_jeu_version` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+
+/-----------------------------------------------------------------------/
+CREATE TABLE  `2015_segamag`.`2015_news` (
+`id_news` INT NOT NULL AUTO_INCREMENT ,
+`news_titre` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`news_corps` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`news_date_creation` DATETIME NOT NULL ,               
+`news_date_modification` DATETIME NULL DEFAULT NULL,
+`news_date_publication` DATETIME NULL DEFAULT NULL,
+`id_membre_createur` INT NOT NULL ,
+`id_membre_modificateur` INT NOT NULL ,
+`news_frontpage` TINYINT NOT NULL DEFAULT  '0',
+`news_frontpage_image_url` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`news_dossier` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+PRIMARY KEY (  `id_news` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+
+CREATE TABLE  `2015_segamag`.`2015_news_plateformes` (
+`id_news_plateforme` INT NOT NULL AUTO_INCREMENT ,
+`id_news` INT NOT NULL ,
+`id_plateforme` INT NOT NULL ,
+PRIMARY KEY (  `id_news_plateforme` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+CREATE TABLE  `2015_segamag`.`2015_news_categories_news` (
+`id_news_categorie_news` INT NOT NULL AUTO_INCREMENT ,
+`id_news` INT NOT NULL ,
+`id_categorie` INT NOT NULL ,
+PRIMARY KEY (  `id_news_categorie_news` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+
+CREATE TABLE  `2015_segamag`.`2015_news_constructeurs` (
+`id_news_constructeur` INT NOT NULL AUTO_INCREMENT ,
+`id_news` INT NOT NULL ,
+`id_constructeur` INT NOT NULL ,
+PRIMARY KEY (  `id_news_constructeur` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+CREATE TABLE  `2015_segamag`.`2015_news_developpeurs` (
+`id_news_developpeur` INT NOT NULL AUTO_INCREMENT ,
+`id_news` INT NOT NULL ,
+`id_developpeur` INT NOT NULL ,
+PRIMARY KEY (  `id_news_developpeur` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+CREATE TABLE  `2015_segamag`.`2015_news_jeux_versions_plateformes` (
+`id_news_jeu_version_plateforme` INT NOT NULL AUTO_INCREMENT ,
+`id_news` INT NOT NULL ,
+`id_jeu_version_plateforme` INT NOT NULL ,
+PRIMARY KEY (  `id_news_jeu_version_plateforme` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+CREATE TABLE  `2015_segamag`.`2015_news_images_jeux_versions_plateformes` (
+`id_news_image_jeu_version_plateforme` INT NOT NULL AUTO_INCREMENT ,
+`id_news` INT NOT NULL ,
+`id_image_jeu_version_plateforme` INT NOT NULL ,
+PRIMARY KEY (  `id_news_image_jeu_version_plateforme` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+CREATE TABLE  `2015_segamag`.`2015_news_videos_jeux_versions_plateformes` (
+`id_news_video_jeu_version_plateforme` INT NOT NULL AUTO_INCREMENT ,
+`id_news` INT NOT NULL ,
+`id_video_jeu_version_plateforme` INT NOT NULL ,
+PRIMARY KEY (  `id_news_video_jeu_version_plateforme` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+/-----------------------------------------------------------------------/
+CREATE TABLE  `2015_segamag`.`2015_articles` (
+`id_article` INT NOT NULL AUTO_INCREMENT ,
+`article_titre` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`article_corps` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`article_date_creation` DATETIME NOT NULL ,               
+`article_date_modification` DATETIME NULL DEFAULT NULL,
+`article_date_publication` DATETIME NULL DEFAULT NULL,
+`id_membre_createur` INT NOT NULL ,
+`id_membre_modificateur` INT NOT NULL ,
+`article_frontpage` TINYINT NOT NULL DEFAULT  '0',
+`article_frontpage_image_url` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`article_dossier` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+PRIMARY KEY (  `id_article` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+
+CREATE TABLE  `2015_segamag`.`2015_articles_plateformes` (
+`id_article_plateforme` INT NOT NULL AUTO_INCREMENT ,
+`id_article` INT NOT NULL ,
+`id_plateforme` INT NOT NULL ,
+PRIMARY KEY (  `id_article_plateforme` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+CREATE TABLE  `2015_segamag`.`2015_articles_categories` (
+`id_article_categorie_article` INT NOT NULL AUTO_INCREMENT ,
+`id_article` INT NOT NULL ,
+`id_categorie` INT NOT NULL ,
+PRIMARY KEY (  `id_article_categorie_article` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+
+CREATE TABLE  `2015_segamag`.`2015_articles_constructeurs` (
+`id_article_constructeur` INT NOT NULL AUTO_INCREMENT ,
+`id_article` INT NOT NULL ,
+`id_constructeur` INT NOT NULL ,
+PRIMARY KEY (  `id_article_constructeur` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+CREATE TABLE  `2015_segamag`.`2015_articles_developpeurs` (
+`id_article_developpeur` INT NOT NULL AUTO_INCREMENT ,
+`id_article` INT NOT NULL ,
+`id_developpeur` INT NOT NULL ,
+PRIMARY KEY (  `id_article_developpeur` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+CREATE TABLE  `2015_segamag`.`2015_articles_jeux_versions_plateformes` (
+`id_article_jeu_version_plateforme` INT NOT NULL AUTO_INCREMENT ,
+`id_article` INT NOT NULL ,
+`id_jeu_version_plateforme` INT NOT NULL ,
+PRIMARY KEY (  `id_article_jeu_version_plateforme` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+CREATE TABLE  `2015_segamag`.`2015_articles_images_jeux_versions_plateformes` (
+`id_article_image_jeu_version_plateforme` INT NOT NULL AUTO_INCREMENT ,
+`id_article` INT NOT NULL ,
+`id_image_jeu_version_plateforme` INT NOT NULL ,
+PRIMARY KEY (  `id_article_image_jeu_version_plateforme` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+CREATE TABLE  `2015_segamag`.`2015_articles_videos_jeux_versions_plateformes` (
+`id_article_video_jeu_version_plateforme` INT NOT NULL AUTO_INCREMENT ,
+`id_article` INT NOT NULL ,
+`id_video_jeu_version_plateforme` INT NOT NULL ,
+PRIMARY KEY (  `id_article_video_jeu_version_plateforme` )
+) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci
+
+
+
+
+
+sftp://sftp.dc0.gpaas.net
+1323147
+papayou666
+22
+

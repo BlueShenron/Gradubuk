@@ -1,0 +1,246 @@
+@font-face {
+  font-family: 'fontello';
+  src: url('fonts/fontello.eot?90213665');
+  src: url('fonts/fontello.eot?90213665#iefix') format('embedded-opentype'),
+       url('fonts/fontello.woff?90213665') format('woff'),
+       url('fonts/fontello.ttf?90213665') format('truetype'),
+       url('fonts/fontello.svg?90213665#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* === the dark full screen background, which appears on form pop-up === */
+#background-on-popup {
+    z-index: 9998;
+    position: fixed;
+    display: none;
+    height: 100%;
+    width: 100%;
+    background: #000000;
+    top: 0px;
+    left: 0px;
+}
+
+/* ==== Wrapper of the forms ==== */
+#sign-in-form {
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	position: absolute;
+	display: none;
+	
+    top: 20%;
+	
+    border-radius: 4px;
+    z-index: 9999;
+}
+
+#register-form {
+
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	position: absolute;
+	display: none;
+	
+	top: 20%;
+    border-radius: 4px;
+    z-index: 9999;
+}
+
+
+#login-box, #inscription-box{
+	border: 2px solid #ffffff;
+	-webkit-box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.75);
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 0.75em;
+	line-height: 140%;
+	color: #444;
+	//padding: 10px 20px 20px 20px;
+	background-color: #eeeeee;
+}
+
+.login-popup fieldset, .inscription-popup fieldset{
+	padding: 10px 20px 20px 20px;
+}
+/* ==== le header de la box==== */
+.header-login-box{
+	padding:10px 20px 23px 20px;
+
+	background: #23b3e2; /* Old browsers */
+	background: -moz-linear-gradient(top,  #87e0fd 0%, #23b3e2 10%, #23b3e2 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#87e0fd), color-stop(10%,#23b3e2), color-stop(100%,#23b3e2)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#23b3e2',GradientType=0 ); /* IE6-9 */
+
+	border-bottom:1px solid #0c97c4;
+	
+}
+
+.close_cross span{
+	display:none;
+}
+
+.close_cross:before, .close_cross:before{
+	//display:inline-block;
+	float:right;
+	font-family: "fontello";  
+	content: '\e805';
+	font-size:1.5em;
+	color:#fff; 
+
+
+}
+
+.titre_authentification{
+	float:left;
+	display:block; 
+	color:#fff; 
+	font-family: 'Hammersmith One', sans-serif;
+	text-transform: uppercase; 
+	font-size:1.1em;	
+}
+
+/* ====== inputs et autres labels ===== */
+
+.login-popup input[type=text], .login-popup input[type=password], .login-popup input[type=email],.inscription-popup input[type=text], .inscription-popup input[type=password], .inscription-popup input[type=email]{
+	 /* pour que la taille des boutons et de champs text soit la même */
+	width: 100%;
+	box-sizing: border-box; 
+	-moz-box-sizing: border-box;
+}
+
+.login-popup input[type=submit], .inscription-popup input[type=submit]{	
+	
+	//margin-top:15px;
+	padding:0;
+	border: 0px;
+	//width:200px;
+	padding:10px;
+	display:inline-block;
+	color:white;
+	width:100%;
+	background: #23b3e2; /* Old browsers */
+	background: -moz-linear-gradient(top,  #87e0fd 0%, #23b3e2 10%, #23b3e2 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#87e0fd), color-stop(10%,#23b3e2), color-stop(100%,#23b3e2)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#23b3e2',GradientType=0 ); /* IE6-9 */
+
+	
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	
+	border:1px solid #0c97c4;
+	
+	
+	-webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.10);
+	-moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.10);
+	box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.10);
+	
+	/* pour que la taille des boutons et de champs text soit la même */
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	
+	font-size:1.2em;
+}
+
+.inscription_ok{
+	text-align:center;
+	display:block;
+	//margin-top:15px;
+	padding:0;
+	border: 0px;
+	//width:200px;
+	padding:10px;
+	display:inline-block;
+	color:white;
+	width:100%;
+	background: #23b3e2; /* Old browsers */
+	background: -moz-linear-gradient(top,  #87e0fd 0%, #23b3e2 10%, #23b3e2 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#87e0fd), color-stop(10%,#23b3e2), color-stop(100%,#23b3e2)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#23b3e2',GradientType=0 ); /* IE6-9 */
+
+	
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	
+	border:1px solid #0c97c4;
+	
+	
+	-webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.10);
+	-moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.10);
+	box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.10);
+	
+	/* pour que la taille des boutons et de champs text soit la même */
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	
+	font-size:1.2em;
+}
+
+.login-popup p:not(:last-child), .inscription-popup p:not(:last-child){
+	margin:0px 0px 8px 0;
+}
+
+.confirmation_inscription{
+	//border: 1px solid #99cc33;
+	//background-color:#daf4a7;
+	color:#99cc33;
+	//font-size:1.2em;
+	padding:1em;
+}
+.confirmation_inscription:before{
+	font-family: "fontello";  
+	content: '\e807';
+	margin-right:0.8em;
+}
+
+.message_erreur_authentification{
+	//text-align:center;
+	color: #e2011a;
+	border: 1px solid #e2011a;
+	background-color:#ff9933;
+	padding:1em;
+}
+.message_erreur_authentification:before{
+	font-family: "fontello";  
+	content: '\e805';
+	margin:0 0.4em;
+}
+
+/* ==== les trucs qui changent en fonction de la taille==== */
+@media (min-width: 482px) {	
+	#sign-in-form {
+		max-width: 480px;
+		min-width: 280px;
+		margin-left: -240px;
+		left: 50%;
+	}
+	#register-form {
+		max-width: 480px;
+		min-width: 250px;
+		margin-left: -240px;
+		left: 50%;
+	}
+}
+
+@media (max-width: 690px) {	
+	
+}

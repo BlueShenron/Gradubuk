@@ -1,0 +1,20 @@
+CREATE VIEW actu(TITRE, URL) 
+AS 
+SELECT n.news_titre, CONCAT('id_news=',n.id_news) FROM 2015_news AS n 
+UNION ALL 
+SELECT a.article_titre, CONCAT('id_article=',a.id_article) FROM 2015_article AS a 
+UNION ALL 
+SELECT t.test_titre, CONCAT('id_test=',t.id_test) FROM test_actu AS t
+
+
+CREATE VIEW test_actu(id_test,test_titre) 
+AS 
+
+
+SELECT t.id_test AS id_test, tjvp.test_titre AS test_titre
+FROM 2015_test_jeu_version_plateforme AS tjvp
+LEFT JOIN 2015_test AS T
+ON t.id_test = tjvp.id_test
+WHERE tjvp.id_jeu_version_plateforme = t.id_jeu_version_plateforme
+
+

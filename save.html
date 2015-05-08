@@ -1,0 +1,261 @@
+<!-- ++++++++++++++++++++++formulaire d'identification++++++++++++++++++++++++++ -->
+<div class="login_form_container">
+	<div id="login_form_content">
+        <div id="login-box" class="login-popup">
+				<div class="header-login-box">
+				<h2>connexion</h2>
+        		<a href="#" id="close_login_cross"><span>close</span></a>
+        		</div>
+                <fieldset id="login-fieldset" class="textbox">
+              
+                
+                <p><label for="pseudo"><span>pseudo: </span></label></p>
+                <p><input id="pseudo" name="pseudo" value="" type="text" autocomplete="on" placeholder="Pseudo"></p>
+                
+                <p><label for="password"><span>mot de passe: </span></label></p>
+                <p><input id="password" name="password" value="" type="password" placeholder="Mot de passe"></p>
+
+                
+                <p><input type="submit" id="login_sumit" value="se connecter"/></p>
+                
+                <p><a href="#">Mot de passe oublié?</a></p>
+                
+                </fieldset>
+          		
+          		</div>
+          		<div id="inscription-box" class="inscription-popup">
+				<div class="header-login-box">
+				<h2>s'inscrire</h2>
+        		<a href="#" id="close_login_cross"><span>close</span></a>
+        		</div>
+                <fieldset id="inscription-fieldset" class="textbox">
+              
+                
+                <p><label for="inscription_pseudo"><span>pseudo: </span></label></p>
+                <p><input id="inscription_pseudo" name="inscription_pseudo" value="" type="text" autocomplete="on" placeholder="Pseudo"></p>
+                <p id="inscription_pseudo_p"></p>
+                
+                <p><label for="inscription_email"><span>email: </span></label></p>
+                <p><input id="inscription_email" name="inscription_email" value="" type="email" placeholder="Mot de passe"></p>
+				<p id="inscription_email_p"></p>
+				
+                <p><label for="inscription_password"><span>mot de passe: </span></label></p>
+                <p><input id="inscription_password" name="inscription_password" value="" type="password" placeholder="Mot de passe"></p>
+				<p id="inscription_password_p"></p>
+				
+                
+                <p><label for="inscription_password"><span>mot de passe: </span></label></p>
+                <p><input id="inscription_password" name="inscription_password" value="" type="password" placeholder="Mot de passe"></p>
+				<p id="inscription_password_p"></p>
+				
+                <p><input type="submit" id="login_sumit" value="s'inscrire"/></p>
+                
+               
+                
+                </fieldset>
+          		
+          		</div>    </div>
+</div>
+<!-- ++++++++++++++++++++++formulaire d'identification++++++++++++++++++++++++++ -->
+
+
+
+@font-face {
+  font-family: 'fontello';
+  src: url('fonts/fontello.eot?90213665');
+  src: url('fonts/fontello.eot?90213665#iefix') format('embedded-opentype'),
+       url('fonts/fontello.woff?90213665') format('woff'),
+       url('fonts/fontello.ttf?90213665') format('truetype'),
+       url('fonts/fontello.svg?90213665#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+#mask {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	z-index: 10;
+	width: 100%; height: 100%;
+	opacity: 0.8;
+	z-index: 999;
+}
+
+.login-popup, .inscription-popup{
+	
+	display:none;
+	
+	border: 2px solid #ffffff;
+	-webkit-box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.75);
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 0.75em;
+	line-height: 140%;
+	color: #444;
+	
+	position: absolute;
+ 	left: 50%;
+  	top: 50%;
+  	z-index:9999;
+
+ 	transform: translate(-50%, -50%);
+	
+	
+}
+
+.login-popup fieldset, .inscription-popup fieldset{
+	padding: 10px 20px 20px 20px;
+	background-color: #eeeeee;
+	
+	
+}
+
+
+
+.login-popup input[type=text], .login-popup input[type=password], .login-popup input[type=email],.inscription-popup input[type=text], .inscription-popup input[type=password], .inscription-popup input[type=email]{
+
+	
+	 /* pour que la taille des boutons et de champs text soit la même */
+	box-sizing: border-box; 
+	-moz-box-sizing: border-box;
+}
+
+@media (min-width: 690px) {	
+	.login-popup, .inscription-popup{
+		width:500px;
+		margin:auto;
+	}
+	
+}
+@media (max-width: 690px) {	
+	.login-popup, .inscription-popup{
+		width:90%;
+		margin:auto;
+	}
+	
+}
+
+
+
+.login-popup input[type=submit], .inscription-popup input[type=submit]{	
+	
+	margin-top:15px;
+	padding:0;
+	border: 0px;
+	//width:200px;
+	padding:5px;
+	display:inline-block;
+	color:white;
+	width:100%;
+	background: #23b3e2; /* Old browsers */
+	background: -moz-linear-gradient(top,  #87e0fd 0%, #23b3e2 10%, #23b3e2 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#87e0fd), color-stop(10%,#23b3e2), color-stop(100%,#23b3e2)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#23b3e2',GradientType=0 ); /* IE6-9 */
+
+	
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	
+	border:1px solid #0c97c4;
+	
+	
+	-webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.10);
+-moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.10);
+box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.10);
+	
+	/* pour que la taille des boutons et de champs text soit la même */
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.login-popup label, .inscription-popup label{
+	padding:0px;
+    width: 100px;
+    cursor: pointer;  
+}	
+.login-popup p, .inscription-popup p{
+	margin:0px 0 8px 0;  
+}
+/*-------------le petit header du login-----------------*/
+.header-login-box{
+	padding:10px 20px 23px 20px;
+
+	background: #23b3e2; /* Old browsers */
+background: -moz-linear-gradient(top,  #87e0fd 0%, #23b3e2 10%, #23b3e2 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#87e0fd), color-stop(10%,#23b3e2), color-stop(100%,#23b3e2)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #87e0fd 0%,#23b3e2 10%,#23b3e2 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#23b3e2',GradientType=0 ); /* IE6-9 */
+
+border-bottom:1px solid #0c97c4;
+	
+}
+#close_login_cross span, #close_inscription_cross span{
+	display:none;
+}
+#close_login_cross:before, #close_inscription_cross:before{
+	//display:inline-block;
+	float:right;
+	font-family: "fontello";  
+	content: '\e805';
+	font-size:1.5em;
+	color:#fff; 
+
+
+}
+h2{
+	float:left;
+	display:block; 
+	color:#fff; 
+	font-family: 'Hammersmith One', sans-serif;
+	text-transform: uppercase; 
+	font-size:1.1em;	
+}
+/*-------------le petit header du login-----------------*/
+
+
+.message_erreur_authentification:before, .message_erreur_inscription:before{
+	font-family: "fontello";
+	content: '\e806';
+	margin-right:0.2em;
+}
+
+.message_erreur_authentification, .message_erreur_inscription{
+	color: #e2011a;
+}
+.message_inscription_ok{
+	color:#6cb809;
+	margin-left:0.4em;
+}
+.message_inscription_ok:before{
+	font-family: "fontello";
+	content: '\e807';
+	margin-right:0.2em;
+}
+.message_erreur_inscription{
+	margin-left:0.4em;
+}
+
+
+
+.format{
+	font-style: italic;
+	color:#666;
+	//font-size:0.9em;
+}
+
+
+

@@ -1,0 +1,72 @@
+CREATE VIEW frontpage(TITRE, URL, DATE_PUBLICATION, ILLUSTRATION, ALT) 
+AS 
+SELECT n.news_titre, CONCAT('id_news=',n.id_news), n.news_date_publication, ni.url_news_illustration, ni.image_alt 
+FROM 2015_news AS n 
+LEFT JOIN 2015_news_illustration AS ni
+ON ni.id_news = n.id_news
+			
+UNION ALL 
+SELECT a.article_titre, CONCAT('id_article=',a.id_article), a.article_date_publication, ai.url_article_illustration, ai.image_alt
+FROM 2015_article AS a
+LEFT JOIN 2015_article_illustration AS ai
+ON ai.id_article = a.id_article
+
+UNION ALL 
+SELECT t.test_titre, CONCAT('id_test_jeu_version_plateforme=',t.id_test_jeu_version_plateforme), t.test_date_publication, t.url_test_illustration, t.image_alt
+FROM test_actu AS t
+
+
+
+CREATE VIEW test_actu(id_test_jeu_version_plateforme,test_titre,test_date_publication, url_test_illustration, image_alt) 
+AS 
+SELECT tjvp.id_test_jeu_version_plateforme AS id_test_jeu_version_plateforme, tjvp.test_titre AS test_titre, t.test_date_publication AS test_date_publication, 
+tjvpi.url_test_jeu_version_plateforme_illustration,
+tjvpi.image_alt
+FROM 2015_test_jeu_version_plateforme AS tjvp
+LEFT JOIN 2015_test AS t
+ON t.id_test = tjvp.id_test
+
+LEFT JOIN 2015_test_jeu_version_plateforme_illustration AS tjvpi
+ON tjvpi.id_test_jeu_version_plateforme = tjvp.id_test_jeu_version_plateforme
+
+WHERE tjvp.id_jeu_version_plateforme = t.id_jeu_version_plateforme
+
+
+
+
+CREATE VIEW frontpage(TITRE, URL, DATE_PUBLICATION, ILLUSTRATION, ALT) 
+AS 
+SELECT n.news_titre, CONCAT('id_news=',n.id_news), n.news_date_publication, ni.url_news_illustration, ni.image_alt 
+FROM 2015_news AS n 
+LEFT JOIN 2015_news_illustration AS ni
+ON ni.id_news = n.id_news
+			
+UNION ALL 
+SELECT a.article_titre, CONCAT('id_article=',a.id_article), a.article_date_publication, ai.url_article_illustration, ai.image_alt
+FROM 2015_article AS a
+LEFT JOIN 2015_article_illustration AS ai
+ON ai.id_article = a.id_article
+
+UNION ALL 
+SELECT t.test_titre, CONCAT('id_test_jeu_version_plateforme=',t.id_test_jeu_version_plateforme), t.test_date_publication, t.url_test_illustration, t.image_alt
+FROM test_actu AS t
+
+
+
+
+
+CREATE VIEW frontpage(TITRE,SOUS_TITRE,URL, DATE_PUBLICATION, ILLUSTRATION) 
+AS 
+SELECT fn.frontpage_titre,fn.frontpage_sous_titre,CONCAT('news.php?id_news=',fn.id_news), fn.frontpage_date_publication, fn.frontpage_image_url
+FROM 2015_frontpage_news AS fn 
+
+			
+UNION ALL 
+SELECT fa.frontpage_titre,fa.frontpage_sous_titre, CONCAT('articles.php?id_article=',fa.id_article), fa.frontpage_date_publication, fa.frontpage_image_url
+FROM 2015_frontpage_article AS fa 
+
+
+UNION ALL 
+SELECT ft.frontpage_titre, ft.frontpage_sous_titre,CONCAT('tests.php?id_test=',ft.id_test), ft.frontpage_date_publication, ft.frontpage_image_url
+FROM 2015_frontpage_test AS ft 
+

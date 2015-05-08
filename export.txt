@@ -1,0 +1,1752 @@
+-- phpMyAdmin SQL Dump
+-- version 4.2.10
+-- http://www.phpmyadmin.net
+--
+-- Client :  localhost
+-- Généré le :  Mer 04 Mars 2015 à 19:48
+-- Version du serveur :  5.5.38
+-- Version de PHP :  5.6.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de données :  `2015_segamag`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_article`
+--
+
+CREATE TABLE `2015_article` (
+`id_article` int(11) NOT NULL,
+  `article_titre` text NOT NULL,
+  `article_corps` text NOT NULL,
+  `article_date_creation` datetime NOT NULL,
+  `article_date_modif` datetime DEFAULT NULL,
+  `article_date_publication` datetime DEFAULT NULL,
+  `id_membre_createur` int(11) NOT NULL,
+  `id_membre_modificateur` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_article`
+--
+
+INSERT INTO `2015_article` (`id_article`, `article_titre`, `article_corps`, `article_date_creation`, `article_date_modif`, `article_date_publication`, `id_membre_createur`, `id_membre_modificateur`) VALUES
+(32, 'C''est parti mon kiki C''est parti mon kiki C''est parti mon kiki', '<p><em>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</em></p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>\r\n\r\n<table style="height:100%; width:100%">\r\n	<tbody>\r\n		<tr>\r\n			<td><img alt="" src="http://localhost:8888/segamagv666/jeux/tintin_1422623233/pictures/tintin__1422628145.jpg" style="width:90%" /></td>\r\n			<td><img alt="" src="http://localhost:8888/segamagv666/jeux/tintin_1422623233/pictures/tintin__1422628145.jpg" style="width:90%" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td>dddd</td>\r\n			<td>dddd</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n', '2015-02-10 18:17:42', '2015-03-04 15:17:57', '2015-02-17 19:34:22', 1, 1),
+(46, '', '', '2015-03-04 14:34:21', '2015-03-04 14:35:42', '0000-00-00 00:00:00', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_article_constructeur`
+--
+
+CREATE TABLE `2015_article_constructeur` (
+`id_article_constructeur` int(11) NOT NULL,
+  `id_article` int(11) NOT NULL,
+  `id_constructeur` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_article_developpeur`
+--
+
+CREATE TABLE `2015_article_developpeur` (
+`id_article_developpeur` int(11) NOT NULL,
+  `id_article` int(11) NOT NULL,
+  `id_developpeur` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_article_editeur`
+--
+
+CREATE TABLE `2015_article_editeur` (
+`id_article_editeur` int(11) NOT NULL,
+  `id_article` int(11) NOT NULL,
+  `id_editeur` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_article_illustration`
+--
+
+CREATE TABLE `2015_article_illustration` (
+`id_article_illustration` int(11) NOT NULL,
+  `id_article` int(11) NOT NULL,
+  `url_article_illustration` varchar(200) NOT NULL,
+  `image_titre` varchar(200) NOT NULL,
+  `image_alt` varchar(200) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=125 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_article_illustration`
+--
+
+INSERT INTO `2015_article_illustration` (`id_article_illustration`, `id_article`, `url_article_illustration`, `image_titre`, `image_alt`) VALUES
+(124, 32, 'articles/_0_1423593383.jpg', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_article_image`
+--
+
+CREATE TABLE `2015_article_image` (
+`id_article_image` int(11) NOT NULL,
+  `id_article` int(11) NOT NULL,
+  `url_article_image` varchar(200) NOT NULL,
+  `image_titre` varchar(200) NOT NULL,
+  `image_alt` varchar(200) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=133 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_article_image`
+--
+
+INSERT INTO `2015_article_image` (`id_article_image`, `id_article`, `url_article_image`, `image_titre`, `image_alt`) VALUES
+(131, 32, 'jeux/tintin_1422623233/pictures/tintin__1422628145.jpg', 'Master System tintin', 'Master System tintin'),
+(132, 32, 'categories_news/111_1422620772.jpg', '111', '111');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_article_jeu_version_plateforme`
+--
+
+CREATE TABLE `2015_article_jeu_version_plateforme` (
+`id_article_jeu_version_plateforme` int(11) NOT NULL,
+  `id_article` int(11) NOT NULL,
+  `id_jeu_version_plateforme` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=126 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_article_jeu_version_plateforme`
+--
+
+INSERT INTO `2015_article_jeu_version_plateforme` (`id_article_jeu_version_plateforme`, `id_article`, `id_jeu_version_plateforme`) VALUES
+(125, 32, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_article_photo`
+--
+
+CREATE TABLE `2015_article_photo` (
+`id_article_photo` int(11) NOT NULL,
+  `id_article` int(11) NOT NULL,
+  `article_photo_nom` varchar(200) NOT NULL,
+  `photo_titre` varchar(200) NOT NULL,
+  `id_categorie_image` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_article_photo`
+--
+
+INSERT INTO `2015_article_photo` (`id_article_photo`, `id_article`, `article_photo_nom`, `photo_titre`, `id_categorie_image`) VALUES
+(44, 46, 'sss_0_1425476077.jpg', 'sss', 1),
+(32, 32, '_0_1423593383.jpg', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_article_plateforme`
+--
+
+CREATE TABLE `2015_article_plateforme` (
+`id_article_plateforme` int(11) NOT NULL,
+  `id_article` int(11) NOT NULL,
+  `id_plateforme` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_article_sous_categorie_news`
+--
+
+CREATE TABLE `2015_article_sous_categorie_news` (
+`id_article_sous_categorie_news` int(11) NOT NULL,
+  `id_article` int(11) NOT NULL,
+  `id_sous_categorie_news` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_article_sous_categorie_news`
+--
+
+INSERT INTO `2015_article_sous_categorie_news` (`id_article_sous_categorie_news`, `id_article`, `id_sous_categorie_news`) VALUES
+(42, 32, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_article_video`
+--
+
+CREATE TABLE `2015_article_video` (
+`id_article_video` int(11) NOT NULL,
+  `id_article` int(11) NOT NULL,
+  `url_article_video` varchar(200) NOT NULL,
+  `video_titre` varchar(200) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_astuce`
+--
+
+CREATE TABLE `2015_astuce` (
+`id_astuce` int(11) NOT NULL,
+  `id_jeu_version_plateforme` int(11) NOT NULL,
+  `astuce_titre` varchar(200) NOT NULL,
+  `astuce` varchar(200) NOT NULL,
+  `id_membre_createur` int(11) NOT NULL,
+  `id_membre_modificateur` int(11) NOT NULL,
+  `astuce_date_creation` datetime NOT NULL,
+  `astuce_date_modif` datetime DEFAULT NULL,
+  `astuce_date_publication` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_categorie_image`
+--
+
+CREATE TABLE `2015_categorie_image` (
+`id_categorie_image` int(11) NOT NULL,
+  `categorie_image_nom` varchar(200) NOT NULL,
+  `categorie_image_date_creation` datetime NOT NULL,
+  `categorie_image_date_modif` datetime NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_categorie_image`
+--
+
+INSERT INTO `2015_categorie_image` (`id_categorie_image`, `categorie_image_nom`, `categorie_image_date_creation`, `categorie_image_date_modif`) VALUES
+(1, 'screenshot', '2015-01-30 12:37:10', '2015-01-30 12:37:10');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_categorie_news`
+--
+
+CREATE TABLE `2015_categorie_news` (
+`id_categorie_news` int(11) NOT NULL,
+  `categorie_news_nom` varchar(200) NOT NULL,
+  `categorie_news_date_creation` datetime NOT NULL,
+  `categorie_news_date_modif` datetime NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_categorie_news`
+--
+
+INSERT INTO `2015_categorie_news` (`id_categorie_news`, `categorie_news_nom`, `categorie_news_date_creation`, `categorie_news_date_modif`) VALUES
+(1, '1', '2015-01-30 13:26:05', '2015-01-30 13:26:05');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_categorie_video`
+--
+
+CREATE TABLE `2015_categorie_video` (
+`id_categorie_video` int(11) NOT NULL,
+  `categorie_video_nom` varchar(200) NOT NULL,
+  `categorie_video_date_creation` datetime NOT NULL,
+  `categorie_video_date_modif` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_classification_cero`
+--
+
+CREATE TABLE `2015_classification_cero` (
+`id_classification_cero` int(11) NOT NULL,
+  `id_jeu_version_region` int(11) NOT NULL,
+  `cero_a` tinyint(4) NOT NULL,
+  `cero_b` tinyint(4) NOT NULL,
+  `cero_c` tinyint(4) NOT NULL,
+  `cero_d` tinyint(4) NOT NULL,
+  `cero_z` tinyint(4) NOT NULL,
+  `cero_romance` tinyint(4) NOT NULL,
+  `cero_sexe` tinyint(4) NOT NULL,
+  `cero_violence` tinyint(4) NOT NULL,
+  `cero_horreur` tinyint(4) NOT NULL,
+  `cero_argent` tinyint(4) NOT NULL,
+  `cero_crime` tinyint(4) NOT NULL,
+  `cero_alcool` tinyint(4) NOT NULL,
+  `cero_drogue` tinyint(4) NOT NULL,
+  `cero_langage` tinyint(4) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_classification_esrb`
+--
+
+CREATE TABLE `2015_classification_esrb` (
+`id_classification_esrb` int(11) NOT NULL,
+  `id_jeu_version_region` int(11) NOT NULL,
+  `esrb_c` tinyint(4) NOT NULL,
+  `esrb_e` tinyint(4) NOT NULL,
+  `esrb_e10` tinyint(4) NOT NULL,
+  `esrb_t` tinyint(4) NOT NULL,
+  `esrb_m` tinyint(4) NOT NULL,
+  `esrb_a` tinyint(4) NOT NULL,
+  `esrb_info` tinyint(4) NOT NULL,
+  `esrb_location` tinyint(4) NOT NULL,
+  `esrb_interact` tinyint(4) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_classification_pegi`
+--
+
+CREATE TABLE `2015_classification_pegi` (
+`id_classification_pegi` int(11) NOT NULL,
+  `id_jeu_version_region` int(11) NOT NULL,
+  `pegi_3` tinyint(4) NOT NULL,
+  `pegi_4` tinyint(4) NOT NULL,
+  `pegi_6` tinyint(4) NOT NULL,
+  `pegi_7` tinyint(4) NOT NULL,
+  `pegi_12` tinyint(4) NOT NULL,
+  `pegi_16` tinyint(4) NOT NULL,
+  `pegi_18` tinyint(4) NOT NULL,
+  `pegi_langage` tinyint(4) NOT NULL,
+  `pegi_discrimination` tinyint(4) NOT NULL,
+  `pegi_drogue` tinyint(4) NOT NULL,
+  `pegi_peur` tinyint(4) NOT NULL,
+  `pegi_jeux_hasard` tinyint(4) NOT NULL,
+  `pegi_sexe` tinyint(4) NOT NULL,
+  `pegi_violence` tinyint(4) NOT NULL,
+  `pegi_internet` tinyint(4) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_classification_pegi`
+--
+
+INSERT INTO `2015_classification_pegi` (`id_classification_pegi`, `id_jeu_version_region`, `pegi_3`, `pegi_4`, `pegi_6`, `pegi_7`, `pegi_12`, `pegi_16`, `pegi_18`, `pegi_langage`, `pegi_discrimination`, `pegi_drogue`, `pegi_peur`, `pegi_jeux_hasard`, `pegi_sexe`, `pegi_violence`, `pegi_internet`) VALUES
+(1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_constructeur`
+--
+
+CREATE TABLE `2015_constructeur` (
+`id_constructeur` int(11) NOT NULL,
+  `constructeur_nom` varchar(200) NOT NULL,
+  `constructeur_date_creation` datetime NOT NULL,
+  `constructeur_date_modif` datetime NOT NULL,
+  `constructeur_image_nom` varchar(200) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_constructeur`
+--
+
+INSERT INTO `2015_constructeur` (`id_constructeur`, `constructeur_nom`, `constructeur_date_creation`, `constructeur_date_modif`, `constructeur_image_nom`) VALUES
+(1, 'sega', '2015-01-30 14:03:40', '2015-01-30 14:03:40', 'sega_1422623020.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_developpeur`
+--
+
+CREATE TABLE `2015_developpeur` (
+`id_developpeur` int(11) NOT NULL,
+  `developpeur_nom` varchar(200) NOT NULL,
+  `developpeur_date_creation` datetime NOT NULL,
+  `developpeur_date_modif` datetime NOT NULL,
+  `developpeur_image_nom` varchar(200) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_developpeur`
+--
+
+INSERT INTO `2015_developpeur` (`id_developpeur`, `developpeur_nom`, `developpeur_date_creation`, `developpeur_date_modif`, `developpeur_image_nom`) VALUES
+(1, 'Ubisoft', '2015-01-30 14:04:19', '2015-01-30 14:04:19', 'Ubisoft_1422623059.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_editeur`
+--
+
+CREATE TABLE `2015_editeur` (
+`id_editeur` int(11) NOT NULL,
+  `editeur_nom` varchar(200) NOT NULL,
+  `editeur_date_creation` datetime NOT NULL,
+  `editeur_date_modif` datetime NOT NULL,
+  `editeur_image_nom` varchar(200) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_editeur`
+--
+
+INSERT INTO `2015_editeur` (`id_editeur`, `editeur_nom`, `editeur_date_creation`, `editeur_date_modif`, `editeur_image_nom`) VALUES
+(1, 'dd', '2015-01-30 14:45:14', '2015-01-30 14:45:24', 'dd_1422625524.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_frontpage_article`
+--
+
+CREATE TABLE `2015_frontpage_article` (
+`id_frontpage` int(11) NOT NULL,
+  `frontpage_titre` varchar(200) NOT NULL,
+  `frontpage_sous_titre` varchar(200) NOT NULL,
+  `frontpage_image_url` varchar(200) NOT NULL,
+  `frontpage_date_creation` datetime NOT NULL,
+  `frontpage_date_modif` datetime DEFAULT NULL,
+  `frontpage_date_publication` datetime NOT NULL,
+  `id_article` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_frontpage_article`
+--
+
+INSERT INTO `2015_frontpage_article` (`id_frontpage`, `frontpage_titre`, `frontpage_sous_titre`, `frontpage_image_url`, `frontpage_date_creation`, `frontpage_date_modif`, `frontpage_date_publication`, `id_article`) VALUES
+(4, 'C''est parti mon kiki C''est parti mon kiki C''est parti mon kiki', 'ddd', 'articles/_0_1423593383.jpg', '2015-03-04 15:17:57', '2015-03-04 15:17:57', '2015-02-17 19:34:22', 32),
+(3, 'dddd', 'dddd', '', '2015-03-04 14:35:42', '2015-03-04 14:35:42', '0000-00-00 00:00:00', 46);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_frontpage_news`
+--
+
+CREATE TABLE `2015_frontpage_news` (
+`id_frontpage` int(11) NOT NULL,
+  `frontpage_titre` varchar(200) NOT NULL,
+  `frontpage_sous_titre` varchar(200) NOT NULL,
+  `frontpage_image_url` varchar(200) NOT NULL,
+  `frontpage_date_creation` datetime NOT NULL,
+  `frontpage_date_modif` datetime DEFAULT NULL,
+  `frontpage_date_publication` datetime NOT NULL,
+  `id_news` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_frontpage_news`
+--
+
+INSERT INTO `2015_frontpage_news` (`id_frontpage`, `frontpage_titre`, `frontpage_sous_titre`, `frontpage_image_url`, `frontpage_date_creation`, `frontpage_date_modif`, `frontpage_date_publication`, `id_news`) VALUES
+(2, 'fff', 'dd', 'categories_news/222dedee_1422621592.jpg', '2015-03-04 16:12:00', '2015-03-04 16:12:00', '2015-03-04 16:12:13', 36);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_frontpage_test`
+--
+
+CREATE TABLE `2015_frontpage_test` (
+`id_frontpage` int(11) NOT NULL,
+  `frontpage_titre` varchar(200) NOT NULL,
+  `frontpage_sous_titre` varchar(200) NOT NULL,
+  `frontpage_image_url` varchar(200) NOT NULL,
+  `frontpage_date_creation` datetime NOT NULL,
+  `frontpage_date_modif` datetime DEFAULT NULL,
+  `frontpage_date_publication` datetime NOT NULL,
+  `id_test` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_frontpage_test`
+--
+
+INSERT INTO `2015_frontpage_test` (`id_frontpage`, `frontpage_titre`, `frontpage_sous_titre`, `frontpage_image_url`, `frontpage_date_creation`, `frontpage_date_modif`, `frontpage_date_publication`, `id_test`) VALUES
+(9, 'test de tintin', 'ff', '', '2015-03-04 16:10:12', '2015-03-04 16:10:12', '2015-03-04 16:10:50', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_genre`
+--
+
+CREATE TABLE `2015_genre` (
+`id_genre` int(11) NOT NULL,
+  `genre_nom` varchar(200) NOT NULL,
+  `genre_date_creation` datetime NOT NULL,
+  `genre_date_modif` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_jeu`
+--
+
+CREATE TABLE `2015_jeu` (
+`id_jeu` int(11) NOT NULL,
+  `id_developpeur` int(11) NOT NULL,
+  `id_genre` int(11) NOT NULL,
+  `jeu_nom_generique` varchar(200) NOT NULL,
+  `id_nombre_joueur_offline` int(11) NOT NULL,
+  `id_nombre_joueur_online` int(11) NOT NULL,
+  `jeu_descriptif` text NOT NULL,
+  `jeu_dossier` varchar(200) NOT NULL,
+  `jeu_date_creation` datetime NOT NULL,
+  `jeu_date_modif` datetime NOT NULL,
+  `id_membre` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_jeu`
+--
+
+INSERT INTO `2015_jeu` (`id_jeu`, `id_developpeur`, `id_genre`, `jeu_nom_generique`, `id_nombre_joueur_offline`, `id_nombre_joueur_online`, `jeu_descriptif`, `jeu_dossier`, `jeu_date_creation`, `jeu_date_modif`, `id_membre`) VALUES
+(1, 0, 0, 'tintin', 0, 0, '', 'tintin_1422623233', '2015-01-30 14:07:13', '2015-02-18 12:51:53', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_jeu_version_plateforme`
+--
+
+CREATE TABLE `2015_jeu_version_plateforme` (
+`id_jeu_version_plateforme` int(11) NOT NULL,
+  `id_jeu` int(11) NOT NULL,
+  `id_plateforme` int(11) NOT NULL,
+  `jeu_version_plateforme_date_creation` datetime NOT NULL,
+  `jeu_version_plateforme_date_modification` datetime NOT NULL,
+  `id_membre` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_jeu_version_plateforme`
+--
+
+INSERT INTO `2015_jeu_version_plateforme` (`id_jeu_version_plateforme`, `id_jeu`, `id_plateforme`, `jeu_version_plateforme_date_creation`, `jeu_version_plateforme_date_modification`, `id_membre`) VALUES
+(1, 1, 1, '2015-01-30 14:07:17', '2015-01-30 14:07:17', 1),
+(2, 1, 2, '2015-02-18 12:51:53', '2015-02-18 12:51:53', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_jeu_version_plateforme_image`
+--
+
+CREATE TABLE `2015_jeu_version_plateforme_image` (
+`id_jeu_version_plateforme_image` int(11) NOT NULL,
+  `id_jeu_version_plateforme` int(11) NOT NULL,
+  `image_nom` varchar(200) NOT NULL,
+  `id_categorie_image` int(11) NOT NULL,
+  `image_titre` varchar(200) NOT NULL,
+  `jeu_version_plateforme_image_date_upload` datetime NOT NULL,
+  `id_membre` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_jeu_version_plateforme_image`
+--
+
+INSERT INTO `2015_jeu_version_plateforme_image` (`id_jeu_version_plateforme_image`, `id_jeu_version_plateforme`, `image_nom`, `id_categorie_image`, `image_titre`, `jeu_version_plateforme_image_date_upload`, `id_membre`) VALUES
+(1, 1, 'tintin__1422628145.jpg', 0, '', '2015-01-30 15:29:05', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_jeu_version_plateforme_video`
+--
+
+CREATE TABLE `2015_jeu_version_plateforme_video` (
+`id_jeu_version_plateforme_video` int(11) NOT NULL,
+  `id_jeu_version_plateforme` int(11) NOT NULL,
+  `video_url` varchar(200) NOT NULL,
+  `id_categorie_video` int(11) NOT NULL,
+  `video_titre` varchar(200) NOT NULL,
+  `jeu_version_plateforme_video_date_upload` datetime NOT NULL,
+  `id_membre` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_jeu_version_plateforme_video`
+--
+
+INSERT INTO `2015_jeu_version_plateforme_video` (`id_jeu_version_plateforme_video`, `id_jeu_version_plateforme`, `video_url`, `id_categorie_video`, `video_titre`, `jeu_version_plateforme_video_date_upload`, `id_membre`) VALUES
+(1, 1, 'https://www.youtube.com/watch?v=fn4YhHdhhUU', 0, 'hihi', '2015-01-30 14:07:24', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_jeu_version_region`
+--
+
+CREATE TABLE `2015_jeu_version_region` (
+`id_jeu_version_region` int(11) NOT NULL,
+  `id_jeu_version_plateforme` int(11) NOT NULL,
+  `jeu_region_nom` varchar(200) NOT NULL,
+  `jeu_region` varchar(200) NOT NULL,
+  `jeu_date_sortie` date NOT NULL,
+  `id_editeur` int(11) NOT NULL,
+  `jeu_region_cover` varchar(200) NOT NULL DEFAULT 'nopicture.jpg',
+  `jeu_region_jaquette` varchar(200) NOT NULL DEFAULT 'nopicture.jpg',
+  `jeu_version_plateforme_date_creation` datetime NOT NULL,
+  `jeu_version_plateforme_date_modification` datetime NOT NULL,
+  `id_membre` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_jeu_version_region`
+--
+
+INSERT INTO `2015_jeu_version_region` (`id_jeu_version_region`, `id_jeu_version_plateforme`, `jeu_region_nom`, `jeu_region`, `jeu_date_sortie`, `id_editeur`, `jeu_region_cover`, `jeu_region_jaquette`, `jeu_version_plateforme_date_creation`, `jeu_version_plateforme_date_modification`, `id_membre`) VALUES
+(1, 1, '', 'pal', '0000-00-00', 0, 'Master System_pal_1422628161.jpg', '', '2015-01-30 15:29:14', '2015-01-30 15:29:21', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_membre`
+--
+
+CREATE TABLE `2015_membre` (
+`id_membre` int(11) NOT NULL,
+  `pseudo` varchar(200) NOT NULL,
+  `pass_md5` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `groupe` varchar(200) NOT NULL,
+  `membre_date_inscription` datetime NOT NULL,
+  `membre_date_modif` datetime NOT NULL,
+  `membre_date_derniere_connexion` datetime NOT NULL,
+  `cle` varchar(32) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_membre`
+--
+
+INSERT INTO `2015_membre` (`id_membre`, `pseudo`, `pass_md5`, `email`, `groupe`, `membre_date_inscription`, `membre_date_modif`, `membre_date_derniere_connexion`, `cle`) VALUES
+(1, 'admin', 'admin', '', 'admin', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2015-03-04 19:25:22', '');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_news`
+--
+
+CREATE TABLE `2015_news` (
+`id_news` int(11) NOT NULL,
+  `news_titre` text NOT NULL,
+  `news_corps` text NOT NULL,
+  `news_date_creation` datetime NOT NULL,
+  `news_date_modif` datetime DEFAULT NULL,
+  `news_date_publication` datetime DEFAULT NULL,
+  `id_membre_createur` int(11) NOT NULL,
+  `id_membre_modificateur` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_news`
+--
+
+INSERT INTO `2015_news` (`id_news`, `news_titre`, `news_corps`, `news_date_creation`, `news_date_modif`, `news_date_publication`, `id_membre_createur`, `id_membre_modificateur`) VALUES
+(36, 'fff', '', '2015-02-10 19:15:47', '2015-03-04 16:12:13', '2015-03-04 16:12:13', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_news_constructeur`
+--
+
+CREATE TABLE `2015_news_constructeur` (
+`id_news_constructeur` int(11) NOT NULL,
+  `id_news` int(11) NOT NULL,
+  `id_constructeur` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_news_developpeur`
+--
+
+CREATE TABLE `2015_news_developpeur` (
+`id_news_developpeur` int(11) NOT NULL,
+  `id_news` int(11) NOT NULL,
+  `id_developpeur` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_news_editeur`
+--
+
+CREATE TABLE `2015_news_editeur` (
+`id_news_editeur` int(11) NOT NULL,
+  `id_news` int(11) NOT NULL,
+  `id_editeur` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_news_illustration`
+--
+
+CREATE TABLE `2015_news_illustration` (
+`id_news_illustration` int(11) NOT NULL,
+  `id_news` int(11) NOT NULL,
+  `url_news_illustration` varchar(200) NOT NULL,
+  `image_titre` varchar(200) NOT NULL,
+  `image_alt` varchar(200) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=91 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_news_illustration`
+--
+
+INSERT INTO `2015_news_illustration` (`id_news_illustration`, `id_news`, `url_news_illustration`, `image_titre`, `image_alt`) VALUES
+(90, 36, 'categories_news/222dedee_1422621592.jpg', '222dedee', '222dedee');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_news_image`
+--
+
+CREATE TABLE `2015_news_image` (
+`id_news_image` int(11) NOT NULL,
+  `id_news` int(11) NOT NULL,
+  `url_news_image` varchar(200) NOT NULL,
+  `image_titre` varchar(200) NOT NULL,
+  `image_alt` varchar(200) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=120 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_news_image`
+--
+
+INSERT INTO `2015_news_image` (`id_news_image`, `id_news`, `url_news_image`, `image_titre`, `image_alt`) VALUES
+(118, 36, 'news/ddd_2_1423592513.jpg', 'ddd', 'ddd'),
+(119, 36, 'news/ddd_3_1423592513.jpg', 'ddd', 'ddd'),
+(117, 36, 'news/ddd_0_1423592513.jpg', 'ddd', 'ddd'),
+(116, 36, 'news/ddd_1_1423592513.jpg', 'ddd', 'ddd'),
+(115, 36, 'jeux/tintin_1422623233/pictures/tintin__1422628145.jpg', 'Master System tintin', 'Master System tintin');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_news_jeu_version_plateforme`
+--
+
+CREATE TABLE `2015_news_jeu_version_plateforme` (
+`id_news_jeu_version_plateforme` int(11) NOT NULL,
+  `id_news` int(11) NOT NULL,
+  `id_jeu_version_plateforme` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_news_jeu_version_plateforme`
+--
+
+INSERT INTO `2015_news_jeu_version_plateforme` (`id_news_jeu_version_plateforme`, `id_news`, `id_jeu_version_plateforme`) VALUES
+(99, 36, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_news_photo`
+--
+
+CREATE TABLE `2015_news_photo` (
+`id_news_photo` int(11) NOT NULL,
+  `id_news` int(11) NOT NULL,
+  `news_photo_nom` varchar(200) NOT NULL,
+  `photo_titre` varchar(200) NOT NULL,
+  `id_categorie_image` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_news_photo`
+--
+
+INSERT INTO `2015_news_photo` (`id_news_photo`, `id_news`, `news_photo_nom`, `photo_titre`, `id_categorie_image`) VALUES
+(32, 36, 'ddd_0_1423592513.jpg', 'ddd', 0),
+(33, 36, 'ddd_1_1423592513.jpg', 'ddd', 0),
+(34, 36, 'ddd_2_1423592513.jpg', 'ddd', 0),
+(35, 36, 'ddd_3_1423592513.jpg', 'ddd', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_news_plateforme`
+--
+
+CREATE TABLE `2015_news_plateforme` (
+`id_news_plateforme` int(11) NOT NULL,
+  `id_news` int(11) NOT NULL,
+  `id_plateforme` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_news_sous_categorie_news`
+--
+
+CREATE TABLE `2015_news_sous_categorie_news` (
+`id_news_sous_categorie_news` int(11) NOT NULL,
+  `id_news` int(11) NOT NULL,
+  `id_sous_categorie_news` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_news_sous_categorie_news`
+--
+
+INSERT INTO `2015_news_sous_categorie_news` (`id_news_sous_categorie_news`, `id_news`, `id_sous_categorie_news`) VALUES
+(38, 36, 1),
+(39, 36, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_news_video`
+--
+
+CREATE TABLE `2015_news_video` (
+`id_news_video` int(11) NOT NULL,
+  `id_news` int(11) NOT NULL,
+  `url_news_video` varchar(200) NOT NULL,
+  `video_titre` varchar(200) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=88 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_news_video`
+--
+
+INSERT INTO `2015_news_video` (`id_news_video`, `id_news`, `url_news_video`, `video_titre`) VALUES
+(87, 0, 'https://www.youtube.com/watch?v=fn4YhHdhhUU', 'Master System   non renseignÃ©   hihi');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_nombre_joueur`
+--
+
+CREATE TABLE `2015_nombre_joueur` (
+`id_nombre_joueur` int(11) NOT NULL,
+  `nombre_joueur_nom` varchar(200) NOT NULL,
+  `nombre_joueur_date_creation` datetime NOT NULL,
+  `nombre_joueur_date_modif` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_partenaire`
+--
+
+CREATE TABLE `2015_partenaire` (
+`id_partenaire` int(11) NOT NULL,
+  `partenaire_nom` varchar(200) NOT NULL,
+  `partenaire_url` varchar(200) NOT NULL,
+  `partenaire_date_creation` datetime NOT NULL,
+  `partenaire_date_modif` datetime NOT NULL,
+  `partenaire_image_nom` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_plateforme`
+--
+
+CREATE TABLE `2015_plateforme` (
+`id_plateforme` int(11) NOT NULL,
+  `id_constructeur` int(11) NOT NULL,
+  `plateforme_nom_generique` varchar(200) NOT NULL,
+  `plateforme_image_generique` varchar(200) NOT NULL,
+  `plateforme_description` text NOT NULL,
+  `retro` tinyint(4) NOT NULL DEFAULT '0',
+  `plateforme_date_creation` datetime NOT NULL,
+  `plateforme_date_modif` datetime NOT NULL,
+  `plateforme_dossier` varchar(200) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_plateforme`
+--
+
+INSERT INTO `2015_plateforme` (`id_plateforme`, `id_constructeur`, `plateforme_nom_generique`, `plateforme_image_generique`, `plateforme_description`, `retro`, `plateforme_date_creation`, `plateforme_date_modif`, `plateforme_dossier`) VALUES
+(1, 0, 'Master System', 'Master_System_1422622793.jpg', '', 0, '2015-01-30 13:59:53', '2015-01-30 13:59:57', 'Master_System_1422622793'),
+(2, 1, 'Mega Drive', '', '', 0, '2015-02-18 12:51:26', '2015-02-18 12:51:26', 'Mega_Drive_1424260286');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_plateforme_version`
+--
+
+CREATE TABLE `2015_plateforme_version` (
+`id_plateforme_version` int(11) NOT NULL,
+  `id_plateforme` int(11) NOT NULL,
+  `plateforme_version_nom` varchar(200) NOT NULL,
+  `date_lancement` date NOT NULL,
+  `date_fin` date NOT NULL,
+  `plateforme_version_description` text NOT NULL,
+  `plateforme_version_date_creation` datetime NOT NULL,
+  `plateforme_version_date_modif` datetime NOT NULL,
+  `id_membre` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_plateforme_version`
+--
+
+INSERT INTO `2015_plateforme_version` (`id_plateforme_version`, `id_plateforme`, `plateforme_version_nom`, `date_lancement`, `date_fin`, `plateforme_version_description`, `plateforme_version_date_creation`, `plateforme_version_date_modif`, `id_membre`) VALUES
+(1, 1, 'Master System 1', '0000-00-00', '0000-00-00', '', '2015-01-30 14:00:03', '2015-01-30 14:00:24', 1),
+(2, 1, 'Master System 2', '0000-00-00', '0000-00-00', '', '2015-01-30 14:00:29', '2015-01-30 14:00:37', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_plateforme_version_image`
+--
+
+CREATE TABLE `2015_plateforme_version_image` (
+`id_plateforme_version_image` int(11) NOT NULL,
+  `id_plateforme_version` int(11) NOT NULL,
+  `plateforme_version_image_nom` varchar(200) NOT NULL,
+  `plateforme_version_image_date_creation` datetime NOT NULL,
+  `id_membre` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_plateforme_version_image`
+--
+
+INSERT INTO `2015_plateforme_version_image` (`id_plateforme_version_image`, `id_plateforme_version`, `plateforme_version_image_nom`, `plateforme_version_image_date_creation`, `id_membre`) VALUES
+(1, 1, 'Master_System_1_1422622895.jpg', '2015-01-30 14:01:35', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_sous_categorie_news`
+--
+
+CREATE TABLE `2015_sous_categorie_news` (
+`id_sous_categorie_news` int(11) NOT NULL,
+  `id_categorie_news` int(11) NOT NULL,
+  `sous_categorie_news_nom` varchar(200) NOT NULL,
+  `sous_categorie_news_date_creation` datetime NOT NULL,
+  `sous_categorie_news_date_modif` datetime NOT NULL,
+  `sous_categorie_news_image_nom` varchar(200) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_sous_categorie_news`
+--
+
+INSERT INTO `2015_sous_categorie_news` (`id_sous_categorie_news`, `id_categorie_news`, `sous_categorie_news_nom`, `sous_categorie_news_date_creation`, `sous_categorie_news_date_modif`, `sous_categorie_news_image_nom`) VALUES
+(1, 1, '111', '2015-01-30 13:26:12', '2015-01-30 13:26:12', '111_1422620772.jpg'),
+(2, 1, '222dedee', '2015-01-30 13:39:52', '2015-01-30 13:39:52', '222dedee_1422621592.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_test`
+--
+
+CREATE TABLE `2015_test` (
+`id_test` int(11) NOT NULL,
+  `id_jeu_version_plateforme` int(11) NOT NULL,
+  `id_membre_createur` int(11) NOT NULL,
+  `id_membre_modificateur` int(11) NOT NULL,
+  `test_date_creation` datetime NOT NULL,
+  `test_date_modif` datetime DEFAULT NULL,
+  `test_date_publication` datetime DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_test`
+--
+
+INSERT INTO `2015_test` (`id_test`, `id_jeu_version_plateforme`, `id_membre_createur`, `id_membre_modificateur`, `test_date_creation`, `test_date_modif`, `test_date_publication`) VALUES
+(1, 1, 1, 1, '2015-01-30 21:30:35', '2015-03-04 16:10:50', '2015-03-04 16:10:50');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_test_illustration`
+--
+
+CREATE TABLE `2015_test_illustration` (
+`id_test_illustration` int(11) NOT NULL,
+  `id_test` int(11) NOT NULL,
+  `url_test_illustration` varchar(200) NOT NULL,
+  `image_titre` varchar(200) NOT NULL,
+  `image_alt` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_test_image`
+--
+
+CREATE TABLE `2015_test_image` (
+`id_test_image` int(11) NOT NULL,
+  `id_test` int(11) NOT NULL,
+  `url_test_image` varchar(200) NOT NULL,
+  `image_titre` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_test_jeu_version_plateforme`
+--
+
+CREATE TABLE `2015_test_jeu_version_plateforme` (
+`id_test_jeu_version_plateforme` int(11) NOT NULL,
+  `id_test` int(11) NOT NULL,
+  `id_jeu_version_plateforme` int(11) NOT NULL,
+  `test_titre` text NOT NULL,
+  `test_corps` text NOT NULL,
+  `test_note` int(11) NOT NULL,
+  `test_plus` text NOT NULL,
+  `test_moins` text NOT NULL,
+  `id_membre_createur` int(11) NOT NULL,
+  `id_membre_modificateur` int(11) NOT NULL,
+  `test_date_creation` datetime NOT NULL,
+  `test_date_modif` datetime DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `2015_test_jeu_version_plateforme`
+--
+
+INSERT INTO `2015_test_jeu_version_plateforme` (`id_test_jeu_version_plateforme`, `id_test`, `id_jeu_version_plateforme`, `test_titre`, `test_corps`, `test_note`, `test_plus`, `test_moins`, `id_membre_createur`, `id_membre_modificateur`, `test_date_creation`, `test_date_modif`) VALUES
+(12, 1, 1, 'test de tintin', '<p>ddddii</p>', 0, '', '', 1, 1, '2015-03-04 19:25:39', '2015-03-04 19:25:39'),
+(13, 1, 2, 'test de tintin', '<p>ddddii</p>', 0, '', '', 1, 1, '2015-03-04 19:25:39', '2015-03-04 19:25:39');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_test_jeu_version_plateforme_illustration`
+--
+
+CREATE TABLE `2015_test_jeu_version_plateforme_illustration` (
+`id_test_jeu_version_plateforme_illustration` int(11) NOT NULL,
+  `id_test_jeu_version_plateforme` int(11) NOT NULL,
+  `url_test_jeu_version_plateforme_illustration` varchar(200) NOT NULL,
+  `illustration_titre` varchar(200) NOT NULL,
+  `image_alt` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_test_jeu_version_plateforme_image`
+--
+
+CREATE TABLE `2015_test_jeu_version_plateforme_image` (
+`id_test_jeu_version_plateforme_image` int(11) NOT NULL,
+  `id_test_jeu_version_plateforme` int(11) NOT NULL,
+  `url_test_jeu_version_plateforme_image` varchar(200) NOT NULL,
+  `image_titre` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_test_jeu_version_plateforme_video`
+--
+
+CREATE TABLE `2015_test_jeu_version_plateforme_video` (
+`id_test_jeu_version_plateforme_video` int(11) NOT NULL,
+  `id_test_jeu_version_plateforme` int(11) NOT NULL,
+  `url_test_jeu_version_plateforme_video` varchar(200) NOT NULL,
+  `video_titre` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `2015_test_video`
+--
+
+CREATE TABLE `2015_test_video` (
+`id_test_video` int(11) NOT NULL,
+  `id_test` int(11) NOT NULL,
+  `url_test_video` varchar(200) NOT NULL,
+  `video_titre` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Doublure de structure pour la vue `frontpage`
+--
+CREATE TABLE `frontpage` (
+`TITRE` varchar(200)
+,`URL` varchar(35)
+,`DATE_PUBLICATION` datetime
+,`ILLUSTRATION` varchar(200)
+);
+-- --------------------------------------------------------
+
+--
+-- Structure de la vue `frontpage`
+--
+DROP TABLE IF EXISTS `frontpage`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `frontpage` AS select `fn`.`frontpage_titre` AS `TITRE`,concat('news.php?id_news=',`fn`.`id_news`) AS `URL`,`fn`.`frontpage_date_publication` AS `DATE_PUBLICATION`,`fn`.`frontpage_image_url` AS `ILLUSTRATION` from `2015_frontpage_news` `fn` union all select `fa`.`frontpage_titre` AS `frontpage_titre`,concat('articles.php?id_article=',`fa`.`id_article`) AS `CONCAT('articles.php?id_article=',fa.id_article)`,`fa`.`frontpage_date_publication` AS `frontpage_date_publication`,`fa`.`frontpage_image_url` AS `frontpage_image_url` from `2015_frontpage_article` `fa` union all select `ft`.`frontpage_titre` AS `frontpage_titre`,concat('tests.php?id_test=',`ft`.`id_test`) AS `CONCAT('tests.php?id_test=',ft.id_test)`,`ft`.`frontpage_date_publication` AS `frontpage_date_publication`,`ft`.`frontpage_image_url` AS `frontpage_image_url` from `2015_frontpage_test` `ft`;
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `2015_article`
+--
+ALTER TABLE `2015_article`
+ ADD PRIMARY KEY (`id_article`);
+
+--
+-- Index pour la table `2015_article_constructeur`
+--
+ALTER TABLE `2015_article_constructeur`
+ ADD PRIMARY KEY (`id_article_constructeur`);
+
+--
+-- Index pour la table `2015_article_developpeur`
+--
+ALTER TABLE `2015_article_developpeur`
+ ADD PRIMARY KEY (`id_article_developpeur`);
+
+--
+-- Index pour la table `2015_article_editeur`
+--
+ALTER TABLE `2015_article_editeur`
+ ADD PRIMARY KEY (`id_article_editeur`);
+
+--
+-- Index pour la table `2015_article_illustration`
+--
+ALTER TABLE `2015_article_illustration`
+ ADD PRIMARY KEY (`id_article_illustration`);
+
+--
+-- Index pour la table `2015_article_image`
+--
+ALTER TABLE `2015_article_image`
+ ADD PRIMARY KEY (`id_article_image`);
+
+--
+-- Index pour la table `2015_article_jeu_version_plateforme`
+--
+ALTER TABLE `2015_article_jeu_version_plateforme`
+ ADD PRIMARY KEY (`id_article_jeu_version_plateforme`);
+
+--
+-- Index pour la table `2015_article_photo`
+--
+ALTER TABLE `2015_article_photo`
+ ADD PRIMARY KEY (`id_article_photo`);
+
+--
+-- Index pour la table `2015_article_plateforme`
+--
+ALTER TABLE `2015_article_plateforme`
+ ADD PRIMARY KEY (`id_article_plateforme`);
+
+--
+-- Index pour la table `2015_article_sous_categorie_news`
+--
+ALTER TABLE `2015_article_sous_categorie_news`
+ ADD PRIMARY KEY (`id_article_sous_categorie_news`);
+
+--
+-- Index pour la table `2015_article_video`
+--
+ALTER TABLE `2015_article_video`
+ ADD PRIMARY KEY (`id_article_video`);
+
+--
+-- Index pour la table `2015_astuce`
+--
+ALTER TABLE `2015_astuce`
+ ADD PRIMARY KEY (`id_astuce`);
+
+--
+-- Index pour la table `2015_categorie_image`
+--
+ALTER TABLE `2015_categorie_image`
+ ADD PRIMARY KEY (`id_categorie_image`);
+
+--
+-- Index pour la table `2015_categorie_news`
+--
+ALTER TABLE `2015_categorie_news`
+ ADD PRIMARY KEY (`id_categorie_news`);
+
+--
+-- Index pour la table `2015_categorie_video`
+--
+ALTER TABLE `2015_categorie_video`
+ ADD PRIMARY KEY (`id_categorie_video`);
+
+--
+-- Index pour la table `2015_classification_cero`
+--
+ALTER TABLE `2015_classification_cero`
+ ADD PRIMARY KEY (`id_classification_cero`);
+
+--
+-- Index pour la table `2015_classification_esrb`
+--
+ALTER TABLE `2015_classification_esrb`
+ ADD PRIMARY KEY (`id_classification_esrb`);
+
+--
+-- Index pour la table `2015_classification_pegi`
+--
+ALTER TABLE `2015_classification_pegi`
+ ADD PRIMARY KEY (`id_classification_pegi`);
+
+--
+-- Index pour la table `2015_constructeur`
+--
+ALTER TABLE `2015_constructeur`
+ ADD PRIMARY KEY (`id_constructeur`);
+
+--
+-- Index pour la table `2015_developpeur`
+--
+ALTER TABLE `2015_developpeur`
+ ADD PRIMARY KEY (`id_developpeur`);
+
+--
+-- Index pour la table `2015_editeur`
+--
+ALTER TABLE `2015_editeur`
+ ADD PRIMARY KEY (`id_editeur`);
+
+--
+-- Index pour la table `2015_frontpage_article`
+--
+ALTER TABLE `2015_frontpage_article`
+ ADD PRIMARY KEY (`id_frontpage`);
+
+--
+-- Index pour la table `2015_frontpage_news`
+--
+ALTER TABLE `2015_frontpage_news`
+ ADD PRIMARY KEY (`id_frontpage`);
+
+--
+-- Index pour la table `2015_frontpage_test`
+--
+ALTER TABLE `2015_frontpage_test`
+ ADD PRIMARY KEY (`id_frontpage`);
+
+--
+-- Index pour la table `2015_genre`
+--
+ALTER TABLE `2015_genre`
+ ADD PRIMARY KEY (`id_genre`);
+
+--
+-- Index pour la table `2015_jeu`
+--
+ALTER TABLE `2015_jeu`
+ ADD PRIMARY KEY (`id_jeu`);
+
+--
+-- Index pour la table `2015_jeu_version_plateforme`
+--
+ALTER TABLE `2015_jeu_version_plateforme`
+ ADD PRIMARY KEY (`id_jeu_version_plateforme`);
+
+--
+-- Index pour la table `2015_jeu_version_plateforme_image`
+--
+ALTER TABLE `2015_jeu_version_plateforme_image`
+ ADD PRIMARY KEY (`id_jeu_version_plateforme_image`);
+
+--
+-- Index pour la table `2015_jeu_version_plateforme_video`
+--
+ALTER TABLE `2015_jeu_version_plateforme_video`
+ ADD PRIMARY KEY (`id_jeu_version_plateforme_video`);
+
+--
+-- Index pour la table `2015_jeu_version_region`
+--
+ALTER TABLE `2015_jeu_version_region`
+ ADD PRIMARY KEY (`id_jeu_version_region`);
+
+--
+-- Index pour la table `2015_membre`
+--
+ALTER TABLE `2015_membre`
+ ADD PRIMARY KEY (`id_membre`);
+
+--
+-- Index pour la table `2015_news`
+--
+ALTER TABLE `2015_news`
+ ADD PRIMARY KEY (`id_news`);
+
+--
+-- Index pour la table `2015_news_constructeur`
+--
+ALTER TABLE `2015_news_constructeur`
+ ADD PRIMARY KEY (`id_news_constructeur`);
+
+--
+-- Index pour la table `2015_news_developpeur`
+--
+ALTER TABLE `2015_news_developpeur`
+ ADD PRIMARY KEY (`id_news_developpeur`);
+
+--
+-- Index pour la table `2015_news_editeur`
+--
+ALTER TABLE `2015_news_editeur`
+ ADD PRIMARY KEY (`id_news_editeur`);
+
+--
+-- Index pour la table `2015_news_illustration`
+--
+ALTER TABLE `2015_news_illustration`
+ ADD PRIMARY KEY (`id_news_illustration`);
+
+--
+-- Index pour la table `2015_news_image`
+--
+ALTER TABLE `2015_news_image`
+ ADD PRIMARY KEY (`id_news_image`);
+
+--
+-- Index pour la table `2015_news_jeu_version_plateforme`
+--
+ALTER TABLE `2015_news_jeu_version_plateforme`
+ ADD PRIMARY KEY (`id_news_jeu_version_plateforme`);
+
+--
+-- Index pour la table `2015_news_photo`
+--
+ALTER TABLE `2015_news_photo`
+ ADD PRIMARY KEY (`id_news_photo`);
+
+--
+-- Index pour la table `2015_news_plateforme`
+--
+ALTER TABLE `2015_news_plateforme`
+ ADD PRIMARY KEY (`id_news_plateforme`);
+
+--
+-- Index pour la table `2015_news_sous_categorie_news`
+--
+ALTER TABLE `2015_news_sous_categorie_news`
+ ADD PRIMARY KEY (`id_news_sous_categorie_news`);
+
+--
+-- Index pour la table `2015_news_video`
+--
+ALTER TABLE `2015_news_video`
+ ADD PRIMARY KEY (`id_news_video`);
+
+--
+-- Index pour la table `2015_nombre_joueur`
+--
+ALTER TABLE `2015_nombre_joueur`
+ ADD PRIMARY KEY (`id_nombre_joueur`);
+
+--
+-- Index pour la table `2015_partenaire`
+--
+ALTER TABLE `2015_partenaire`
+ ADD PRIMARY KEY (`id_partenaire`);
+
+--
+-- Index pour la table `2015_plateforme`
+--
+ALTER TABLE `2015_plateforme`
+ ADD PRIMARY KEY (`id_plateforme`);
+
+--
+-- Index pour la table `2015_plateforme_version`
+--
+ALTER TABLE `2015_plateforme_version`
+ ADD PRIMARY KEY (`id_plateforme_version`);
+
+--
+-- Index pour la table `2015_plateforme_version_image`
+--
+ALTER TABLE `2015_plateforme_version_image`
+ ADD PRIMARY KEY (`id_plateforme_version_image`);
+
+--
+-- Index pour la table `2015_sous_categorie_news`
+--
+ALTER TABLE `2015_sous_categorie_news`
+ ADD PRIMARY KEY (`id_sous_categorie_news`);
+
+--
+-- Index pour la table `2015_test`
+--
+ALTER TABLE `2015_test`
+ ADD PRIMARY KEY (`id_test`);
+
+--
+-- Index pour la table `2015_test_illustration`
+--
+ALTER TABLE `2015_test_illustration`
+ ADD PRIMARY KEY (`id_test_illustration`);
+
+--
+-- Index pour la table `2015_test_image`
+--
+ALTER TABLE `2015_test_image`
+ ADD PRIMARY KEY (`id_test_image`);
+
+--
+-- Index pour la table `2015_test_jeu_version_plateforme`
+--
+ALTER TABLE `2015_test_jeu_version_plateforme`
+ ADD PRIMARY KEY (`id_test_jeu_version_plateforme`);
+
+--
+-- Index pour la table `2015_test_jeu_version_plateforme_illustration`
+--
+ALTER TABLE `2015_test_jeu_version_plateforme_illustration`
+ ADD PRIMARY KEY (`id_test_jeu_version_plateforme_illustration`);
+
+--
+-- Index pour la table `2015_test_jeu_version_plateforme_image`
+--
+ALTER TABLE `2015_test_jeu_version_plateforme_image`
+ ADD PRIMARY KEY (`id_test_jeu_version_plateforme_image`);
+
+--
+-- Index pour la table `2015_test_jeu_version_plateforme_video`
+--
+ALTER TABLE `2015_test_jeu_version_plateforme_video`
+ ADD PRIMARY KEY (`id_test_jeu_version_plateforme_video`);
+
+--
+-- Index pour la table `2015_test_video`
+--
+ALTER TABLE `2015_test_video`
+ ADD PRIMARY KEY (`id_test_video`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `2015_article`
+--
+ALTER TABLE `2015_article`
+MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
+--
+-- AUTO_INCREMENT pour la table `2015_article_constructeur`
+--
+ALTER TABLE `2015_article_constructeur`
+MODIFY `id_article_constructeur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
+--
+-- AUTO_INCREMENT pour la table `2015_article_developpeur`
+--
+ALTER TABLE `2015_article_developpeur`
+MODIFY `id_article_developpeur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=70;
+--
+-- AUTO_INCREMENT pour la table `2015_article_editeur`
+--
+ALTER TABLE `2015_article_editeur`
+MODIFY `id_article_editeur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT pour la table `2015_article_illustration`
+--
+ALTER TABLE `2015_article_illustration`
+MODIFY `id_article_illustration` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=125;
+--
+-- AUTO_INCREMENT pour la table `2015_article_image`
+--
+ALTER TABLE `2015_article_image`
+MODIFY `id_article_image` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=133;
+--
+-- AUTO_INCREMENT pour la table `2015_article_jeu_version_plateforme`
+--
+ALTER TABLE `2015_article_jeu_version_plateforme`
+MODIFY `id_article_jeu_version_plateforme` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=126;
+--
+-- AUTO_INCREMENT pour la table `2015_article_photo`
+--
+ALTER TABLE `2015_article_photo`
+MODIFY `id_article_photo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
+--
+-- AUTO_INCREMENT pour la table `2015_article_plateforme`
+--
+ALTER TABLE `2015_article_plateforme`
+MODIFY `id_article_plateforme` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT pour la table `2015_article_sous_categorie_news`
+--
+ALTER TABLE `2015_article_sous_categorie_news`
+MODIFY `id_article_sous_categorie_news` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
+--
+-- AUTO_INCREMENT pour la table `2015_article_video`
+--
+ALTER TABLE `2015_article_video`
+MODIFY `id_article_video` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=81;
+--
+-- AUTO_INCREMENT pour la table `2015_astuce`
+--
+ALTER TABLE `2015_astuce`
+MODIFY `id_astuce` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `2015_categorie_image`
+--
+ALTER TABLE `2015_categorie_image`
+MODIFY `id_categorie_image` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `2015_categorie_news`
+--
+ALTER TABLE `2015_categorie_news`
+MODIFY `id_categorie_news` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `2015_categorie_video`
+--
+ALTER TABLE `2015_categorie_video`
+MODIFY `id_categorie_video` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `2015_classification_cero`
+--
+ALTER TABLE `2015_classification_cero`
+MODIFY `id_classification_cero` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `2015_classification_esrb`
+--
+ALTER TABLE `2015_classification_esrb`
+MODIFY `id_classification_esrb` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `2015_classification_pegi`
+--
+ALTER TABLE `2015_classification_pegi`
+MODIFY `id_classification_pegi` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `2015_constructeur`
+--
+ALTER TABLE `2015_constructeur`
+MODIFY `id_constructeur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `2015_developpeur`
+--
+ALTER TABLE `2015_developpeur`
+MODIFY `id_developpeur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `2015_editeur`
+--
+ALTER TABLE `2015_editeur`
+MODIFY `id_editeur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `2015_frontpage_article`
+--
+ALTER TABLE `2015_frontpage_article`
+MODIFY `id_frontpage` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `2015_frontpage_news`
+--
+ALTER TABLE `2015_frontpage_news`
+MODIFY `id_frontpage` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `2015_frontpage_test`
+--
+ALTER TABLE `2015_frontpage_test`
+MODIFY `id_frontpage` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT pour la table `2015_genre`
+--
+ALTER TABLE `2015_genre`
+MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `2015_jeu`
+--
+ALTER TABLE `2015_jeu`
+MODIFY `id_jeu` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `2015_jeu_version_plateforme`
+--
+ALTER TABLE `2015_jeu_version_plateforme`
+MODIFY `id_jeu_version_plateforme` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `2015_jeu_version_plateforme_image`
+--
+ALTER TABLE `2015_jeu_version_plateforme_image`
+MODIFY `id_jeu_version_plateforme_image` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `2015_jeu_version_plateforme_video`
+--
+ALTER TABLE `2015_jeu_version_plateforme_video`
+MODIFY `id_jeu_version_plateforme_video` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `2015_jeu_version_region`
+--
+ALTER TABLE `2015_jeu_version_region`
+MODIFY `id_jeu_version_region` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `2015_membre`
+--
+ALTER TABLE `2015_membre`
+MODIFY `id_membre` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `2015_news`
+--
+ALTER TABLE `2015_news`
+MODIFY `id_news` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
+--
+-- AUTO_INCREMENT pour la table `2015_news_constructeur`
+--
+ALTER TABLE `2015_news_constructeur`
+MODIFY `id_news_constructeur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
+--
+-- AUTO_INCREMENT pour la table `2015_news_developpeur`
+--
+ALTER TABLE `2015_news_developpeur`
+MODIFY `id_news_developpeur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=70;
+--
+-- AUTO_INCREMENT pour la table `2015_news_editeur`
+--
+ALTER TABLE `2015_news_editeur`
+MODIFY `id_news_editeur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT pour la table `2015_news_illustration`
+--
+ALTER TABLE `2015_news_illustration`
+MODIFY `id_news_illustration` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=91;
+--
+-- AUTO_INCREMENT pour la table `2015_news_image`
+--
+ALTER TABLE `2015_news_image`
+MODIFY `id_news_image` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=120;
+--
+-- AUTO_INCREMENT pour la table `2015_news_jeu_version_plateforme`
+--
+ALTER TABLE `2015_news_jeu_version_plateforme`
+MODIFY `id_news_jeu_version_plateforme` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=100;
+--
+-- AUTO_INCREMENT pour la table `2015_news_photo`
+--
+ALTER TABLE `2015_news_photo`
+MODIFY `id_news_photo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
+--
+-- AUTO_INCREMENT pour la table `2015_news_plateforme`
+--
+ALTER TABLE `2015_news_plateforme`
+MODIFY `id_news_plateforme` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT pour la table `2015_news_sous_categorie_news`
+--
+ALTER TABLE `2015_news_sous_categorie_news`
+MODIFY `id_news_sous_categorie_news` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
+--
+-- AUTO_INCREMENT pour la table `2015_news_video`
+--
+ALTER TABLE `2015_news_video`
+MODIFY `id_news_video` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=88;
+--
+-- AUTO_INCREMENT pour la table `2015_nombre_joueur`
+--
+ALTER TABLE `2015_nombre_joueur`
+MODIFY `id_nombre_joueur` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `2015_partenaire`
+--
+ALTER TABLE `2015_partenaire`
+MODIFY `id_partenaire` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `2015_plateforme`
+--
+ALTER TABLE `2015_plateforme`
+MODIFY `id_plateforme` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `2015_plateforme_version`
+--
+ALTER TABLE `2015_plateforme_version`
+MODIFY `id_plateforme_version` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `2015_plateforme_version_image`
+--
+ALTER TABLE `2015_plateforme_version_image`
+MODIFY `id_plateforme_version_image` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `2015_sous_categorie_news`
+--
+ALTER TABLE `2015_sous_categorie_news`
+MODIFY `id_sous_categorie_news` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `2015_test`
+--
+ALTER TABLE `2015_test`
+MODIFY `id_test` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `2015_test_illustration`
+--
+ALTER TABLE `2015_test_illustration`
+MODIFY `id_test_illustration` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `2015_test_image`
+--
+ALTER TABLE `2015_test_image`
+MODIFY `id_test_image` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `2015_test_jeu_version_plateforme`
+--
+ALTER TABLE `2015_test_jeu_version_plateforme`
+MODIFY `id_test_jeu_version_plateforme` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT pour la table `2015_test_jeu_version_plateforme_illustration`
+--
+ALTER TABLE `2015_test_jeu_version_plateforme_illustration`
+MODIFY `id_test_jeu_version_plateforme_illustration` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `2015_test_jeu_version_plateforme_image`
+--
+ALTER TABLE `2015_test_jeu_version_plateforme_image`
+MODIFY `id_test_jeu_version_plateforme_image` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `2015_test_jeu_version_plateforme_video`
+--
+ALTER TABLE `2015_test_jeu_version_plateforme_video`
+MODIFY `id_test_jeu_version_plateforme_video` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `2015_test_video`
+--
+ALTER TABLE `2015_test_video`
+MODIFY `id_test_video` int(11) NOT NULL AUTO_INCREMENT;
